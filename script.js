@@ -1,12 +1,14 @@
 // Get random item
-function getComputerChoice(arr) {
-   const random = Math.floor(Math.random() * arr.length);
-   const result = arr[random];
+function getComputerChoice(choices) {
+   const random = Math.floor(Math.random() * choices.length);
+   const result = choices[random];
     return result;
 }
-const RockPaperScissors = ["rock", "paper", "scissors"];
-const result = getComputerChoice(RockPaperScissors);
-console.log(result);
+const choices = ["rock", "paper", "scissors"];
+// const result = getComputerChoice(RockPaperScissors);
+console.log(getComputerChoice((choices)));
+
+// Play one round of game
 
 function playRound(playerSelection, computerSelection) {
     if (playerSelection == "rock" && computerSelection == "scissors") {
@@ -46,14 +48,29 @@ function playRound(playerSelection, computerSelection) {
         return result;
     }
 }
-const playerSelection = prompt("Enter your Choice: ").toLowerCase();
-const computerSelection = result;
-// console.log(playRound(playerSelection, computerSelection));
 
+// console.log(oneRoundGame);
+// console.log(oneRoundGame);
 function game() {
-    let times = 5;
-    for(let i = 0; i < times; i ++ ){
-        playRound(playerSelection, computerSelection)
+    let playerScore = 0;
+    let computerScore = 0;
+    const numRounds = 5;
+    for(let i = 0; i < numRounds; i++){
+        const playerSelection = prompt("Enter your Choice: ").toLowerCase();
+        const computerSelection = getComputerChoice(choices);
+        const roundResult = playRound(playerSelection, computerSelection);
+        console.log(`Round ${i+1}: ${roundResult}`);
+        if (roundResult == "You Win! Rock beats Scissors" || roundResult == "You Win! Scissors beats Paper" || roundResult == "You Win! Paper beats Rock") {
+            playerScore++;}
+        else if (roundResult == "You Lose! Paper beats Rock" || roundResult == "You Lose! Rock beats Scissors" || roundResult == "You Lose! Scissors beats Paper") {
+            computerScore++;}
+    if (playerScore > computerScore) {
+        console.log(`You Win! Score: ${playerScore}: ${computerScore}`);
+    } else {
+        console.log(`You Lose! Score: ${playerScore}: ${computerScore}`);
+    }
     }
 }
-console.log(game());
+game();
+// const gameResult = game();
+// console.log(gameResult);
