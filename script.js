@@ -4,9 +4,10 @@ function getComputerChoice(choices) {
    const result = choices[random];
     return result;
 }
+
+
 const choices = ["rock", "paper", "scissors"];
-// const result = getComputerChoice(RockPaperScissors);
-console.log(getComputerChoice((choices)));
+
 
 // Play one round of game
 
@@ -49,28 +50,64 @@ function playRound(playerSelection, computerSelection) {
     }
 }
 
-// console.log(oneRoundGame);
-// console.log(oneRoundGame);
+// Play round of 5 games, tracks score of each round.
+
 function game() {
     let playerScore = 0;
     let computerScore = 0;
-    const numRounds = 5;
-    for(let i = 0; i < numRounds; i++){
-        const playerSelection = prompt("Enter your Choice: ").toLowerCase();
+    const numRounds = 3;
+
+    
+    const buttons = document.querySelectorAll('button');
+    buttons.forEach(btn => {
+        btn.addEventListener('click', function() {
+        const playerSelection = btn.value.toString();
         const computerSelection = getComputerChoice(choices);
         const roundResult = playRound(playerSelection, computerSelection);
-        console.log(`Round ${i+1}: ${roundResult}`);
-        if (roundResult == "You Win! Rock beats Scissors" || roundResult == "You Win! Scissors beats Paper" || roundResult == "You Win! Paper beats Rock") {
-            playerScore++;}
-        else if (roundResult == "You Lose! Paper beats Rock" || roundResult == "You Lose! Rock beats Scissors" || roundResult == "You Lose! Scissors beats Paper") {
-            computerScore++;}
+        const computerChoices = document.getElementById('computer');
+        computerChoices.textContent = computerSelection;
+        const matchResult = document.getElementById('player');
+        matchResult.textContent = `${roundResult}`;
+           
+        
+    if (roundResult == "You Win! Rock beats Scissors" || roundResult == "You Win! Scissors beats Paper" || roundResult == "You Win! Paper beats Rock") {
+        playerScore++;}
+    else if (roundResult == "You Lose! Paper beats Rock" || roundResult == "You Lose! Rock beats Scissors" || roundResult == "You Lose! Scissors beats Paper") {
+        computerScore++;}
     if (playerScore > computerScore) {
-        console.log(`You Win! Score: ${playerScore}: ${computerScore}`);
+        const plScore = document.getElementById('finalResult');
+        plScore.textContent = `You Win! Score: ${playerScore}: ${computerScore}`;
     } else {
-        console.log(`You Lose! Score: ${playerScore}: ${computerScore}`);
+        const plScore = document.getElementById('finalResult');
+        plScore.textContent = `You Lose! Score: ${playerScore}: ${computerScore}`;
     }
+    
+    if (playerScore == numRounds || computerScore == numRounds) {
+        const gametotal = document.getElementById('totalgame');
+        gametotal.textContent = `Final Score: Player - ${playerScore}, Computer - ${computerScore}`;
+        buttons.forEach(btn => btn.disabled = true);
     }
+});
+});
 }
+
 game();
-// const gameResult = game();
-// console.log(gameResult);
+
+// button parameters
+
+jQuery(document).ready(($) => {
+    $('.quantity').on('click', '.plus', function(e) {
+        let $input = $(this).prev('input.qty');
+        let val = parseInt($input.val());
+        $input.val( val+1 ).change();
+    });
+
+    $('.quantity').on('click', '.minus', 
+        function(e) {
+        let $input = $(this).next('input.qty');
+        const val = parseInt($input.val());
+        if (val > 0) {
+            $input.val( val-1 ).change();
+        } 
+    });
+});

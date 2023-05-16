@@ -1,14 +1,43 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta http-equiv="X-UA-Compatible" content="IE=edge">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="styles.css">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="styles.css" />
     <script src="script.js" defer></script>
     <title>Rock-Paper-Scissors</title>
-</head>
-<body>
-    <h1>Rock Paper Scissors</h1>
-</body>
+  </head>
+  <body>
+    <div id="container">
+        <div id="input">
+            <!-- <input id="numeric" type="number"> -->
+            <form id='myform' method='POST' class='quantity' action='#'>
+                <input type='button' value='-' class='qtyminus minus' field='quantity' />
+                <input type='text' name='quantity' value='0' class='qty' />
+                <input type='button' value='+' class='qtyplus plus' field='quantity' />
+              </form>
+        </div>
+        <div id="header">
+            <h1>Rock Paper Scissors</h1>
+        </div>
+        <div id="computerChoice">
+            <h2 id="computer"></h2>
+        </div>
+        <div id="gameResult">
+            <h2 id="player"></h2>
+        </div>
+        <div id="buttons">
+            <button id="btn1" value="rock">rock</button>
+            <button id="btn2" value="paper">paper</button>
+            <button id="btn3" value="scissors">scissors</button>
+        </div>
+        <div id="finalresult">
+            <h2 id="finalResult"></h2>
+        </div>
+        <div id="totalgameresult">
+            <h2 id="totalgame"></h2>
+        </div> 
+    </div>
+  </body>
 </html>

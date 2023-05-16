@@ -1,0 +1,64 @@
+#container {
+    display: flex;
+    flex-direction: column;
+    width: auto;
+    justify-content: space-around;
+    background-color: aqua;
+}
+input {
+    width: 100px;
+    height: 100px;
+    text-align: center;
+    
+}
+#myform {
+    text-align: center;
+    padding: 5px;
+    border: 1px dotted #ccc;
+    margin: 2%;
+}
+.qty {
+    width: 40px;
+    height: 25px;
+    text-align: center;
+}
+input.qtyplus { width:25px; height:25px;}
+input.qtyminus { width:25px; height:25px;}
+
+#input {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100px;
+}
+#header {
+    display: flex;
+    justify-content: center;
+}
+#buttons {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    border: 2px solid red;
+    height: 100px;
+}
+button {
+    width: 80px;
+    height: 60px;
+    border-radius: 50%;
+}
+
+#computerChoice{
+    display: flex;
+    justify-content: center;
+    height: 200px;
+}
+#gameResult {
+    display: flex;
+    justify-content: center;
+    height: 200px;
+}
+
+#finalResult {
+    height: 200px;
+}
